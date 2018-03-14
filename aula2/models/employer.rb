@@ -1,0 +1,2 @@
+class Employer < Person
+end
