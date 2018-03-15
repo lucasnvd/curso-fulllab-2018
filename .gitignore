@@ -1,0 +1,4 @@
+/.idea
+
+/project/config/database.yml
+/project/db/schema.rb
