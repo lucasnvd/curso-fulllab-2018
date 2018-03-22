@@ -1,11 +1,25 @@
 <div>
-  <p>Hello world</p>
+  <%= form_tag(users_path, method: :get) do %>
 
-  <table>
+    <%= text_field_tag(:by_email, params[:by_email], placeholder: 'Buscar por email') %>
+    <%= text_field_tag(:by_name, params[:by_name], placeholder: 'Buscar por nome') %>
+
+    <%= submit_tag('Buscar') %>
+    <%= link_to('Cancelar', users_path) %>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to('Cadastrar novo usuario', new_user_path) %>
+</div>
+
+<div>
+  <table class="striped">
     <thead>
       <tr>
         <th>Nome</th>
         <th>Email</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -13,9 +27,16 @@
         <tr>
           <td><%= link_to(user_path(user)) { user.name } %></td>
           <td><%= user.email %></td>
+          <td>
+            <%= link_to('Editar usuário', edit_user_path(user)) %>
+
+            <%= button_to('Apagar usuario', user_path(user), method: :delete) %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <%= paginate(@users) %>
 
 </div>

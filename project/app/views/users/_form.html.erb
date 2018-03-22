@@ -1,0 +1,20 @@
+
+<% if @user.errors.present? %>
+  <h4>Ops... erros detectados</h4>
+
+  <% @user.errors.full_messages.each do |error| %>
+    <p> <%= error %> </p>
+  <% end %>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <%= f.text_field(:name, placeholder: 'Nome') %>
+  <%= f.email_field(:email, placeholder: 'E-mail') %>
+
+  <%= f.number_field(:number, placeholder: 'Número') %>
+  <%= f.text_field(:address, placeholder: 'Endereço') %>
+  <%= f.text_field(:state, placeholder: 'Estado') %>
+  <%= f.text_field(:city, placeholder: 'Cidade') %>
+
+  <%= f.submit('Salvar') %>
+<% end %>

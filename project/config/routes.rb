@@ -10,5 +10,4 @@ Rails.application.routes.draw do
       get 'my_action', action: :my_action
     end
   end
-
 end

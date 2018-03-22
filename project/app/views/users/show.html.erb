@@ -1,4 +1,9 @@
 <div>
+  <%= link_to('Voltar para lista', users_path) %>
+  <%= link_to('Editar usuário', edit_user_path(@user)) %>
+</div>
+
+<div>
   <p>nome do usuario: <b><%= @user.name %></b></p>
   <p>email do usuario: <b><%= @user.email %></b></p>
 </div>
