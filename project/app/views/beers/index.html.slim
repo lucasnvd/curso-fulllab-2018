@@ -1,0 +1,30 @@
+div
+  = form_tag(beers_path, method: :get) do
+
+    = number_field(:by_price, :from, placeholder: 'Preço de:', value: params[:by_price]&.fetch(:from, 0.0))
+    = number_field(:by_price, :to, placeholder: 'Preço até:', value: params[:by_price]&.fetch(:to, 100.0))
+
+    = text_field_tag(:by_style, params[:by_style], placeholder: 'Buscar por estilo')
+    = text_field_tag(:by_name, params[:by_name], placeholder: 'Buscar por nome')
+
+    = submit_tag('Buscar')
+    = link_to('Cancelar', beers_path)
+
+div
+  table#beersTable.striped
+    thead
+      tr
+        th Nome
+        th Estilo
+        th Nível de álcool
+        th Preço
+
+    tbody
+      - @beers.each do |beer|
+        tr
+          td = beer.name
+          td = beer.style
+          td = beer.alcohol
+          td = beer.price
+
+  = paginate(@beers)

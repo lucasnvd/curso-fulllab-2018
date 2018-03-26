@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+=begin
 100.times do
   random_years = Faker::Number.between(16, 70)
   name = Faker::Name.name
@@ -22,3 +23,24 @@
     city:    Faker::Address.city
   )
 end
+=end
+
+puts "Creating some fake beers..."
+
+total_beers = 0
+35.times do
+  alcohol = Faker::Number.decimal(1) # better...
+  name    = Faker::Beer.name
+
+  puts "Creating beer: #{name}"
+
+  total_beers = total_beers + 1
+  Beer.create(
+    alcohol: alcohol,
+    style: Faker::Beer.style,
+    price: Faker::Number.decimal(2),
+    name:  name
+  )
+end
+
+puts "Created #{total_beers} beer(s). Total: #{Beer.count}."

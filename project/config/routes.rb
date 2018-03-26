@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # ex:
   # resources :users, only: [:index, :show]
   # resources :users, except: [:destroy, :create, :update]
+  #
+
+  resources :beers
   resources :users do
     collection do
       get 'my_action', action: :my_action
