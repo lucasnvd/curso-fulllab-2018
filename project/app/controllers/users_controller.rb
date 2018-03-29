@@ -1,11 +1,4 @@
 class UsersController < ApplicationController
-
-  # ==== Rails Standard CRUD
-  # Create
-  # Read
-  # Update
-  # Destroy
-
   has_scope :by_state
   has_scope :by_email
   has_scope :by_name

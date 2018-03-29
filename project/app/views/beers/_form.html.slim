@@ -1,0 +1,29 @@
+- if @beer.errors.present?
+  div.row
+    div.col.s12
+      - @beer.errors.full_messages.each do |error|
+        p.red-text = error
+
+= form_for(@beer) do |f|
+  div.row
+    div.input-field.col.s6
+      = f.text_field(:name)
+      = f.label(:name, 'Nome')
+
+    div.input-field.col.s6
+      = f.text_field(:price)
+      = f.label(:price, 'Preço')
+
+  div.row
+    div.input-field.col.s6
+      = f.text_field(:style)
+      = f.label(:style, 'Estilo')
+
+    div.input-field.col.s6
+      = f.text_field(:alcohol)
+      = f.label(:alcohol, 'Nível de álcool')
+
+  div.row
+    div.col.s12.right-align
+      = link_to('Voltar', beers_path, class: 'btn-flat')
+      = f.submit('Enviar', class: 'btn-flat blue-text')

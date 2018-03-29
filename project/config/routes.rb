@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # resources :users, except: [:destroy, :create, :update]
   #
 
+  resources :providers
   resources :beers
   resources :users do
     collection do

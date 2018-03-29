@@ -1,0 +1,61 @@
+div.row
+  div.col.s12
+    div.card
+      = form_tag(providers_path, method: :get) do
+        div.card-content
+          div.row
+            div.col.s12
+              h5 Filtros
+
+          div.row
+            div.input-field.col.s12
+              = text_field_tag(:by_email, params[:by_email])
+              = label_tag('Buscar por email')
+
+          div.row
+            div.input-field.col.s12
+              = text_field_tag(:by_name, params[:by_name])
+              = label_tag('Buscar por nome')
+
+        div.card-action.right-align
+          = submit_tag('Buscar', class: 'btn-flat')
+          = link_to('Cancelar', providers_path, class: 'btn-flat red-text')
+
+div.row
+  div.col.s12.right-align
+    = link_to('Cadastrar novo fornecedor.', new_provider_path, class: 'btn-flat')
+
+div.row
+  div.col.s12
+    div.card
+      div.card-content
+        div.row
+          div.col.s12
+            h5 Resultados
+
+        div.row
+          div.col.s12
+            - if @providers.present?
+              table.striped
+                thead
+                  tr
+                    th Nome
+                    th Telefone para contato
+                    th Email para contato
+                    th.center-align Ações
+
+                tbody
+                  - @providers.each do |provider|
+                    tr
+                      td = provider.name
+                      td = provider.contact_phone
+                      td = provider.contact_email
+                      td.center-align
+                        = link_to('Editar', edit_provider_path(provider), class: 'btn-flat')
+                        = button_to('Apagar', provider_path(provider), method: :delete, class: 'btn-flat')
+
+            - else
+              p.center-align.red-text Sorry... no donuts for you.
+
+  div.col.s12
+    = paginate(@providers)

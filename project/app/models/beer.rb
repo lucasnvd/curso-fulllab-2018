@@ -1,5 +1,4 @@
 class Beer < ApplicationRecord
-
   scope :by_alcohol, ->(from, to) { where(alcohol: from..to) }
   scope :by_price,   ->(from, to) { where(price: from..to) }
   scope :by_style,   ->(style)    { where("style LIKE '%#{style}%'") }

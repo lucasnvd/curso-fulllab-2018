@@ -1,0 +1,26 @@
+div.row
+  div.col.s12
+    div.card
+      div.card-content
+        div.row
+          div.col.s12
+            h5 Fornecedor: ##{@provider.id}
+
+          div.row
+            div.input-field.col.s12
+              = text_field_tag(nil, @provider.name, disabled: true)
+              = label_tag('Nome:')
+
+          div.row
+            div.input-field.col.s12
+              = text_field_tag(nil, @provider.contact_phone, disabled: true)
+              = label_tag('Telefone para contato:')
+
+          div.row
+            div.input-field.col.s12
+              = text_field_tag(nil, @provider.contact_email, disabled: true)
+              = label_tag('Email para contato:')
+
+      div.card-action.right-align
+        = link_to('Voltar', providers_path, class: 'btn-flat')
+        = link_to('Editar', edit_provider_path(@provider), class: 'btn-flat')

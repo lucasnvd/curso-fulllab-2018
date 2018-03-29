@@ -1,0 +1,25 @@
+- if @provider.errors.present?
+  div.row
+    div.col.s12
+      - @provider.errors.full_messages.each do |error|
+        p.red-text = error
+
+= form_for(@provider) do |f|
+  div.row
+    div.input-field.col.s6
+      = f.text_field(:name)
+      = f.label(:name, 'Nome')
+
+    div.input-field.col.s6
+      = f.text_field(:contact_email)
+      = f.label(:contact_email, 'Email para contato')
+
+  div.row
+    div.input-field.col.s12
+      = f.text_field(:contact_phone)
+      = f.label(:contact_phone, 'Telefone para contato')
+
+  div.row
+    div.col.s12.right-align
+      = link_to('Voltar', providers_path, class: 'btn-flat')
+      = f.submit('Enviar', class: 'btn-flat blue-text')

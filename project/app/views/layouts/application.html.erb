@@ -10,7 +10,11 @@
 
   <body>
     <%= render('layouts/header') %>
-    <%= yield %>
+    <div class="row">
+      <div class="col s12">
+        <%= yield %>
+      </div>
+    </div>
     <%= render('layouts/footer') %>
   </body>
 </html>

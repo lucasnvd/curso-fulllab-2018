@@ -1,30 +1,72 @@
-div
-  = form_tag(beers_path, method: :get) do
+div.row
+  div.col.s12
+    div.card
+      = form_tag(beers_path, method: :get) do
+        div.card-content
+          div.row
+            div.col.s12
+              h5 Filtros
 
-    = number_field(:by_price, :from, placeholder: 'Preço de:', value: params[:by_price]&.fetch(:from, 0.0))
-    = number_field(:by_price, :to, placeholder: 'Preço até:', value: params[:by_price]&.fetch(:to, 100.0))
+          div.row
+            div.input-field.col.s6
+              = number_field(:by_price, :from, placeholder: 'Ex.: 10.50', value: params[:by_price]&.fetch(:from, 0.0))
+              = label_tag('Preço a partir de:')
 
-    = text_field_tag(:by_style, params[:by_style], placeholder: 'Buscar por estilo')
-    = text_field_tag(:by_name, params[:by_name], placeholder: 'Buscar por nome')
+            div.input-field.col.s6
+              = number_field(:by_price, :to, placeholder: 'Ex.: 100.00', value: params[:by_price]&.fetch(:to, 100.0))
+              = label_tag('Até:')
 
-    = submit_tag('Buscar')
-    = link_to('Cancelar', beers_path)
+          div.row
+            div.input-field.col.s12
+              = text_field_tag(:by_style, params[:by_style])
+              = label_tag('Buscar por estilo')
 
-div
-  table#beersTable.striped
-    thead
-      tr
-        th Nome
-        th Estilo
-        th Nível de álcool
-        th Preço
+          div.row
+            div.input-field.col.s12
+              = text_field_tag(:by_name, params[:by_name], placeholder: 'Ex.: Duvel')
+              = label_tag('Buscar por rótulo')
 
-    tbody
-      - @beers.each do |beer|
-        tr
-          td = beer.name
-          td = beer.style
-          td = beer.alcohol
-          td = beer.price
+        div.card-action.right-align
+          = submit_tag('Buscar', class: 'btn-flat')
+          = link_to('Cancelar', beers_path, class: 'btn-flat red-text')
 
-  = paginate(@beers)
+div.row
+  div.col.s12.right-align
+    = link_to('Cadastrar nova cerveja.', new_beer_path, class: 'btn-flat')
+
+div.row
+  div.col.s12
+    div.card
+      div.card-content
+        div.row
+          div.col.s12
+            h5 Resultados
+
+        div.row
+          div.col.s12
+            - if @beers.present?
+              table.striped
+                thead
+                  tr
+                    th Nome
+                    th Estilo
+                    th Nível de álcool
+                    th Preço
+                    th.center-align Ações
+
+                tbody
+                  - @beers.each do |beer|
+                    tr
+                      td = beer.name
+                      td = beer.style
+                      td = beer.alcohol
+                      td = beer.price
+                      td.center-align
+                        = link_to('Editar', edit_beer_path(beer), class: 'btn-flat')
+                        = button_to('Apagar', beer_path(beer), method: :delete, class: 'btn-flat')
+
+            - else
+              p.center-align.red-text Sorry... no donuts for you.
+
+  div.col.s12
+    = paginate(@beers)
