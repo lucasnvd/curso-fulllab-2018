@@ -10,9 +10,9 @@ module Project
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
-
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    config.autoload_paths += Dir[
+      Rails.root.join('app', 'services', '*.rb'),
+      Rails.root.join('app', 'decorators', '*.rb')
+    ]
   end
 end

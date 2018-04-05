@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   # ex:
   # resources :users, only: [:index, :show]
   # resources :users, except: [:destroy, :create, :update]
-  #
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, :beers, only: :index
+    end
+  end
 
   resources :providers
   resources :beers
-  resources :users do
-    collection do
-      get 'my_action', action: :my_action
-    end
-  end
+  resources :users
 end
