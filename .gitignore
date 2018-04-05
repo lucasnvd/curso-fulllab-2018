@@ -2,3 +2,4 @@
 
 /project/config/database.yml
 /project/db/schema.rb
+/project/tmp
