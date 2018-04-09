@@ -11,7 +11,7 @@ module Project
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.autoload_paths += Dir[
-      Rails.root.join('app', 'services', '*.rb'),
+      Rails.root.join('app', 'services', '{**}', '*.rb'),
       Rails.root.join('app', 'decorators', '*.rb')
     ]
   end

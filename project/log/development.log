@@ -5515,3 +5515,960 @@ Filter chain halted as :validate_access_token! rendered or redirected
 Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
 
 
+Started GET "/api/v1/users?page=1&per_page=10" for 127.0.0.1 at 2018-04-09 09:50:11 -0300
+  [1m[35m (26.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::UsersController#index as */*
+  Parameters: {"page"=>"1", "per_page"=>"10"}
+Filter chain halted as :validate_access_token! rendered or redirected
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/users?page=1&per_page=10" for 127.0.0.1 at 2018-04-09 09:50:27 -0300
+Processing by Api::V1::UsersController#index as */*
+  Parameters: {"page"=>"1", "per_page"=>"10"}
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (15.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` LIMIT 10 OFFSET 0[0m
+Completed 200 OK in 96ms (Views: 1.0ms | ActiveRecord: 23.8ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('279088437195799245', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateOrders (20180409130402)
+  [1m[35m (25.3ms)[0m  [1m[35mCREATE TABLE `orders` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `active` tinyint(1) DEFAULT 1, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_user_id`  (`user_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180409130402')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrderItems (20180409130457)
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE `order_items` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `order_id` bigint, `beer_id` bigint, `quantity` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_order_items_on_order_id`  (`order_id`),  INDEX `index_order_items_on_beer_id`  (`beer_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180409130457')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('279088437195799245')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('279088437195799245', 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateOrders (20180409130402)
+  [1m[35m (23.8ms)[0m  [1m[35mDROP TABLE `orders`[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20180409130402'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('279088437195799245')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('279088437195799245', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateOrders (20180409130402)
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE `orders` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `active` tinyint(1) DEFAULT 1, `token` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_user_id`  (`user_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180409130402')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('279088437195799245')[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/api/v1/users/120/orders" for 127.0.0.1 at 2018-04-09 10:24:40 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#index as */*
+  Parameters: {"user_id"=>"120"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT `orders`.* FROM `orders` WHERE `orders`.`user_id` = 120[0m
+Completed 200 OK in 30ms (Views: 0.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:36:42 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"user_id"=>"12"}
+Filter chain halted as :validate_access_token! rendered or redirected
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:37:20 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"user_id"=>"12"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Orders::CartAddService):
+  
+app/controllers/api/v1/orders_controller.rb:16:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:38:20 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 2.1ms)
+
+
+  
+NoMethodError (undefined method `orders' for nil:NilClass):
+  
+app/services/orders/add_item_service.rb:7:in `initialize'
+app/controllers/api/v1/orders_controller.rb:16:in `new'
+app/controllers/api/v1/orders_controller.rb:16:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:39:33 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+Completed 500 Internal Server Error in 297ms (ActiveRecord: 3.4ms)
+
+
+  
+NameError (undefined local variable or method `serivce' for #<Api::V1::OrdersController:0x00007ff44c248360>
+Did you mean?  service):
+  
+app/controllers/api/v1/orders_controller.rb:19:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:39:56 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 LIMIT 11[0m
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.4ms)
+
+
+  
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 LIMIT 11[0m  [["user_id", 12], ["active", 1], ["LIMIT", 11]]
+NoMethodError (undefined method `items' for #<ActiveRecord::AssociationRelation []>):
+  
+app/services/orders/add_item_service.rb:12:in `call'
+app/controllers/api/v1/orders_controller.rb:21:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:40:43 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 3.6ms)
+
+
+  
+NameError (undefined local variable or method `input' for #<Orders::AddItemService:0x00007fb7ec88f878>
+Did you mean?  @input):
+  
+app/services/orders/add_item_service.rb:12:in `call'
+app/controllers/api/v1/orders_controller.rb:21:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:41:00 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 878ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:41:44 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 53ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:43:04 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 56ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:43:37 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/services/orders/add_item_service.rb:12:in `call'
+app/controllers/api/v1/orders_controller.rb:21:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:44:08 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 32ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:45:14 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 32ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:46:01 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 64ms (Views: 0.2ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:46:27 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 64ms (Views: 0.3ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:46:58 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `orders` (`user_id`, `created_at`, `updated_at`) VALUES (12, '2018-04-09 13:46:58', '2018-04-09 13:46:58')[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 76ms (Views: 0.3ms | ActiveRecord: 8.2ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` ORDER BY `orders`.`id` ASC LIMIT 1[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:47:50 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 54ms (Views: 0.3ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:48:46 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 846ms (Views: 0.6ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:49:13 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 1[0m
+Completed 200 OK in 93ms (Views: 0.2ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:51:53 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 1[0m
+Completed 200 OK in 805ms (Views: 0.3ms | ActiveRecord: 7.6ms)
+
+
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` ORDER BY `orders`.`id` ASC LIMIT 1[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:54:23 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 117ms (ActiveRecord: 8.9ms)
+
+
+  
+ActiveRecord::InverseOfAssociationNotFoundError (Could not find the inverse association for order (:order_item in Order)):
+  
+app/services/orders/add_item_service.rb:12:in `call'
+app/controllers/api/v1/orders_controller.rb:22:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:54:56 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 1[0m
+Completed 200 OK in 875ms (Views: 0.4ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:55:59 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 840ms (Views: 0.4ms | ActiveRecord: 6.8ms)
+
+
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `order_items`[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:56:54 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 808ms (Views: 0.4ms | ActiveRecord: 6.8ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` ORDER BY `beers`.`id` ASC LIMIT 1[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` ORDER BY `beers`.`id` DESC LIMIT 1[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT `beers`.* FROM `beers`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 1 WHERE `beers`.`id` = 38[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 2 WHERE `beers`.`id` = 39[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE `beers` SET `id` = 3 WHERE `beers`.`id` = 40[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE `beers` SET `id` = 4 WHERE `beers`.`id` = 41[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE `beers` SET `id` = 5 WHERE `beers`.`id` = 42[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[33mUPDATE `beers` SET `id` = 6 WHERE `beers`.`id` = 43[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE `beers` SET `id` = 7 WHERE `beers`.`id` = 44[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE `beers` SET `id` = 8 WHERE `beers`.`id` = 45[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 9 WHERE `beers`.`id` = 46[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE `beers` SET `id` = 10 WHERE `beers`.`id` = 47[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 11 WHERE `beers`.`id` = 48[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE `beers` SET `id` = 12 WHERE `beers`.`id` = 49[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 13 WHERE `beers`.`id` = 50[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 14 WHERE `beers`.`id` = 51[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (5.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 15 WHERE `beers`.`id` = 52[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE `beers` SET `id` = 16 WHERE `beers`.`id` = 53[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 17 WHERE `beers`.`id` = 54[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 18 WHERE `beers`.`id` = 55[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 19 WHERE `beers`.`id` = 56[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 20 WHERE `beers`.`id` = 57[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 21 WHERE `beers`.`id` = 58[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 22 WHERE `beers`.`id` = 59[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 23 WHERE `beers`.`id` = 60[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE `beers` SET `id` = 24 WHERE `beers`.`id` = 61[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 25 WHERE `beers`.`id` = 62[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 26 WHERE `beers`.`id` = 63[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE `beers` SET `id` = 27 WHERE `beers`.`id` = 64[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 28 WHERE `beers`.`id` = 65[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 29 WHERE `beers`.`id` = 66[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `beers` SET `id` = 30 WHERE `beers`.`id` = 67[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 31 WHERE `beers`.`id` = 68[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE `beers` SET `id` = 32 WHERE `beers`.`id` = 69[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `beers` SET `id` = 33 WHERE `beers`.`id` = 70[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` ORDER BY `beers`.`id` ASC LIMIT 1[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:58:26 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.9ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.8ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `order_items` (`order_id`, `beer_id`, `quantity`, `created_at`, `updated_at`) VALUES (1, 1, 1, '2018-04-09 13:58:26', '2018-04-09 13:58:26')[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 39ms (Views: 0.4ms | ActiveRecord: 11.0ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:59:13 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `order_items` (`order_id`, `beer_id`, `quantity`, `created_at`, `updated_at`) VALUES (1, 1, 1, '2018-04-09 13:59:14', '2018-04-09 13:59:14')[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 125ms (Views: 0.7ms | ActiveRecord: 21.2ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 10:59:35 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `order_items` (`order_id`, `beer_id`, `quantity`, `created_at`, `updated_at`) VALUES (1, 1, 1, '2018-04-09 13:59:36', '2018-04-09 13:59:36')[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 103ms (Views: 0.7ms | ActiveRecord: 13.0ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:02:51 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `order_items` (`order_id`, `beer_id`, `quantity`, `created_at`, `updated_at`) VALUES (1, 1, 1, '2018-04-09 14:02:51', '2018-04-09 14:02:51')[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 1[0m
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.2ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 130ms (Views: 0.9ms | ActiveRecord: 15.5ms)
+
+
+  [1m[35mSQL (6.5ms)[0m  [1m[31mDELETE FROM `orders`[0m
+  [1m[35mSQL (6.5ms)[0m  [1m[31mDELETE FROM `order_items`[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:03:46 -0300
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>1, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `orders` (`user_id`, `token`, `created_at`, `updated_at`) VALUES (12, '300ec7cfb46675fa92842bc990e57d338c1d15aa37f6ecb1', '2018-04-09 14:03:46', '2018-04-09 14:03:46')[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `order_items` (`order_id`, `beer_id`, `quantity`, `created_at`, `updated_at`) VALUES (2, 1, 1, '2018-04-09 14:03:46', '2018-04-09 14:03:46')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+Completed 200 OK in 112ms (Views: 0.7ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:05:54 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#index as */*
+  Parameters: {"user_id"=>"12"}
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 96ms (Views: 1.1ms | ActiveRecord: 6.1ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:11:34 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>3, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (5.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.7ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `order_items` (`order_id`, `beer_id`, `quantity`, `created_at`, `updated_at`) VALUES (2, 14, 3, '2018-04-09 14:11:34', '2018-04-09 14:11:34')[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 60ms (Views: 0.6ms | ActiveRecord: 16.5ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:13:52 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>3, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `order_items` (`order_id`, `beer_id`, `quantity`, `created_at`, `updated_at`) VALUES (2, 14, 3, '2018-04-09 14:13:52', '2018-04-09 14:13:52')[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrderItem Load (0.7ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.7ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.8ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 28ms (Views: 0.7ms | ActiveRecord: 10.5ms)
+
+
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` ORDER BY `order_items`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM `order_items` WHERE `order_items`.`id` = 7[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:17:22 -0300
+Processing by Api::V1::OrdersController#index as */*
+  Parameters: {"user_id"=>"12"}
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12[0m
+  [1m[36mOrderItem Load (0.7ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 50ms (Views: 0.6ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:17:48 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `order_items` (`order_id`, `beer_id`, `quantity`, `created_at`, `updated_at`) VALUES (2, 14, 2, '2018-04-09 14:17:48', '2018-04-09 14:17:48')[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (1.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 51ms (Views: 1.2ms | ActiveRecord: 13.1ms)
+
+
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` ORDER BY `order_items`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM `order_items` WHERE `order_items`.`id` = 8[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:18:16 -0300
+Processing by Api::V1::OrdersController#index as */*
+  Parameters: {"user_id"=>"12"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12[0m
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 58ms (Views: 0.9ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:18:21 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 14 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 2.5ms)
+
+
+  
+NoMethodError (undefined method `increment' for nil:NilClass):
+  
+app/services/orders/add_item_service.rb:29:in `only_increment_quantity'
+app/services/orders/add_item_service.rb:23:in `append_item'
+app/services/orders/add_item_service.rb:12:in `call'
+app/controllers/api/v1/orders_controller.rb:23:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:18:48 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 14 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 14 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 80ms (Views: 0.6ms | ActiveRecord: 8.5ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:19:02 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 14 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 14 LIMIT 1[0m
+  [1m[35mSQL (265.2ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 2 WHERE `order_items`.`id` = 6[0m
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 337ms (Views: 0.6ms | ActiveRecord: 268.9ms)
+
+
+Started GET "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:24:06 -0300
+Processing by Api::V1::OrdersController#index as */*
+  Parameters: {"user_id"=>"12"}
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12[0m
+  [1m[36mOrderItem Load (14.2ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (2.1ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (9.8ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 40ms (Views: 1.1ms | ActiveRecord: 26.8ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('279088437195799245', 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateBeerProviderControls (20180409142506)
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE `beer_provider_controls` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `beer_id` bigint, `provider_id` bigint, `quantity` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_beer_provider_controls_on_beer_id`  (`beer_id`),  INDEX `index_beer_provider_controls_on_provider_id`  (`provider_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180409142506')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('279088437195799245')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('279088437195799245', 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('279088437195799245')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:32:12 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 4.2ms)
+
+
+  
+NoMethodError (undefined method `available_beer' for #<Class:0x00007f9ec3b35038>):
+  
+app/services/orders/add_item_service.rb:19:in `available_beer?'
+app/services/orders/add_item_service.rb:27:in `append_item'
+app/services/orders/add_item_service.rb:12:in `call'
+app/controllers/api/v1/orders_controller.rb:23:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:33:12 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 14) LIMIT 1[0m
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 500 Internal Server Error in 121ms (Views: 0.6ms | ActiveRecord: 9.3ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/api/v1/orders_controller.rb:40:in `render_success_response'
+app/controllers/api/v1/orders_controller.rb:21:in `block in create'
+app/services/orders/add_item_service.rb:13:in `call'
+app/controllers/api/v1/orders_controller.rb:23:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:33:56 -0300
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 14) LIMIT 1[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 500 Internal Server Error in 76ms (Views: 0.3ms | ActiveRecord: 3.4ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/api/v1/orders_controller.rb:41:in `render_success_response'
+app/controllers/api/v1/orders_controller.rb:21:in `block in create'
+app/services/orders/add_item_service.rb:13:in `call'
+app/controllers/api/v1/orders_controller.rb:23:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:35:11 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 14) LIMIT 1[0m
+Completed 422 Unprocessable Entity in 73ms (Views: 0.4ms | ActiveRecord: 5.4ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mProvider Load (0.6ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` LIMIT 11[0m
+  [1m[36mProvider Load (0.6ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` ORDER BY `providers`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `beer_provider_controls` (`beer_id`, `provider_id`, `created_at`, `updated_at`) VALUES (1, 2, '2018-04-09 14:37:34', '2018-04-09 14:37:34')[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:37:48 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 14) LIMIT 1[0m
+Completed 422 Unprocessable Entity in 10ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+  [1m[36mBeerProviderControl Load (0.6ms)[0m  [1m[34mSELECT  `beer_provider_controls`.* FROM `beer_provider_controls` ORDER BY `beer_provider_controls`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Load (0.6ms)[0m  [1m[34mSELECT  `beer_provider_controls`.* FROM `beer_provider_controls` ORDER BY `beer_provider_controls`.`id` ASC LIMIT 1[0m
+  [1m[35mSQL (6.3ms)[0m  [1m[33mUPDATE `beer_provider_controls` SET `quantity` = COALESCE(`quantity`, 0) + 20 WHERE `beer_provider_controls`.`id` = 1[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:39:09 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>14}, "user_id"=>"12"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 14) LIMIT 1[0m
+Completed 422 Unprocessable Entity in 9ms (Views: 0.4ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:39:22 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (2.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 1) LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[35mSQL (6.2ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 2 WHERE `order_items`.`id` = 5[0m
+No template found for Api::V1::OrdersController#create, rendering head :no_content
+Completed 204 No Content in 387ms (ActiveRecord: 18.5ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:40:25 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>2, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 1) LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[35mSQL (6.0ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 2 WHERE `order_items`.`id` = 5[0m
+  [1m[36mOrderItem Load (0.8ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 90ms (Views: 0.6ms | ActiveRecord: 11.4ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:40:38 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>3, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (1.7ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 1) LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 3 WHERE `order_items`.`id` = 5[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 51ms (Views: 1.1ms | ActiveRecord: 9.4ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:43:23 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>3, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 1) LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[35mSQL (6.4ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 3 WHERE `order_items`.`id` = 5[0m
+  [1m[36mBeerProviderControl Load (0.4ms)[0m  [1m[34mSELECT  `beer_provider_controls`.* FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 1) ORDER BY `beer_provider_controls`.`id` ASC LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE `beer_provider_controls` SET `quantity` = COALESCE(`quantity`, 0) - 3 WHERE `beer_provider_controls`.`id` = 1[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 144ms (Views: 0.7ms | ActiveRecord: 19.7ms)
+
+
+  [1m[36mBeerProviderControl Load (0.6ms)[0m  [1m[34mSELECT  `beer_provider_controls`.* FROM `beer_provider_controls` ORDER BY `beer_provider_controls`.`id` ASC LIMIT 1[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:44:29 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>3, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (7.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (6.0ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity >= 3 And beer_id = 1) LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 3 WHERE `order_items`.`id` = 5[0m
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 15.8ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/models/beer_provider_control.rb:5:in `block in <class:BeerProviderControl>'
+app/services/orders/add_item_service.rb:47:in `remove_from_stock'
+app/services/orders/add_item_service.rb:14:in `call'
+app/controllers/api/v1/orders_controller.rb:23:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:45:51 -0300
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>3, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity >= 3 And beer_id = 1) LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[35mSQL (6.3ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 3 WHERE `order_items`.`id` = 5[0m
+Completed 500 Internal Server Error in 97ms (ActiveRecord: 14.4ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/models/beer_provider_control.rb:5:in `block in <class:BeerProviderControl>'
+app/services/orders/add_item_service.rb:47:in `remove_from_stock'
+app/services/orders/add_item_service.rb:14:in `call'
+app/controllers/api/v1/orders_controller.rb:23:in `create'
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:48:24 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>3, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity >= 3 And beer_id = 1) LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[35mSQL (6.5ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 3 WHERE `order_items`.`id` = 5[0m
+  [1m[36mBeerProviderControl Load (0.4ms)[0m  [1m[34mSELECT  `beer_provider_controls`.* FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 1) ORDER BY `beer_provider_controls`.`id` ASC LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE `beer_provider_controls` SET `quantity` = COALESCE(`quantity`, 0) - 3 WHERE `beer_provider_controls`.`id` = 1[0m
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 139ms (Views: 0.7ms | ActiveRecord: 18.0ms)
+
+
+  [1m[36mBeerProviderControl Load (0.6ms)[0m  [1m[34mSELECT  `beer_provider_controls`.* FROM `beer_provider_controls` ORDER BY `beer_provider_controls`.`id` ASC LIMIT 1[0m
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:48:41 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>20, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity >= 20 And beer_id = 1) LIMIT 1[0m
+Completed 422 Unprocessable Entity in 11ms (Views: 0.4ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/api/v1/users/12/orders" for 127.0.0.1 at 2018-04-09 11:49:13 -0300
+Processing by Api::V1::OrdersController#create as */*
+  Parameters: {"order"=>{"quantity"=>4, "beer_id"=>1}, "user_id"=>"12"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  [1m[36mOrder Load (1.1ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`user_id` = 12 AND `orders`.`active` = 1 ORDER BY `orders`.`id` ASC LIMIT 1[0m
+  [1m[36mBeerProviderControl Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `beer_provider_controls` WHERE (quantity >= 4 And beer_id = 1) LIMIT 1[0m
+  [1m[36mOrderItem Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT  `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2 AND `order_items`.`beer_id` = 1 LIMIT 1[0m
+  [1m[35mSQL (6.3ms)[0m  [1m[33mUPDATE `order_items` SET `quantity` = COALESCE(`quantity`, 0) + 4 WHERE `order_items`.`id` = 5[0m
+  [1m[36mBeerProviderControl Load (0.7ms)[0m  [1m[34mSELECT  `beer_provider_controls`.* FROM `beer_provider_controls` WHERE (quantity > 0 And beer_id = 1) ORDER BY `beer_provider_controls`.`id` ASC LIMIT 1[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[33mUPDATE `beer_provider_controls` SET `quantity` = COALESCE(`quantity`, 0) - 4 WHERE `beer_provider_controls`.`id` = 1[0m
+  [1m[36mOrderItem Load (0.7ms)[0m  [1m[34mSELECT `order_items`.* FROM `order_items` WHERE `order_items`.`order_id` = 2[0m
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 1 LIMIT 1[0m
+  [1m[36mBeer Load (0.7ms)[0m  [1m[34mSELECT  `beers`.* FROM `beers` WHERE `beers`.`id` = 14 LIMIT 1[0m
+Completed 200 OK in 35ms (Views: 0.6ms | ActiveRecord: 14.0ms)
+
+
+  [1m[36mBeerProviderControl Load (0.6ms)[0m  [1m[34mSELECT  `beer_provider_controls`.* FROM `beer_provider_controls` ORDER BY `beer_provider_controls`.`id` ASC LIMIT 1[0m
